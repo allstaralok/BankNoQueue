@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "195857440295-7968481gnfeq9kfarmh7bhjj6uevq9hc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alok.banknoqueue",
+            "certificate_hash": "2ef7662e3ce60ac92e01f79c80dcaab2cb5c40f1"
+          }
+        },
+        {
           "client_id": "195857440295-hqbd0vb0qu95r3pqalooi3j7p4uj1alg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
