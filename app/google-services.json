@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "195857440295",
+    "firebase_url": "https://my-awesome-project-3f097.firebaseio.com",
+    "project_id": "my-awesome-project-3f097",
+    "storage_bucket": "my-awesome-project-3f097.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195857440295:android:c8a032a023a8d9a9",
+        "android_client_info": {
+          "package_name": "com.example.alok.firebasetutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195857440295-v907o5clg3dlnvhkjeilb46bhkl6901f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alok.firebasetutorial",
+            "certificate_hash": "4b9f94d2c73ad962a417a64168b594c44926b8d5"
+          }
+        },
+        {
+          "client_id": "195857440295-m099lh69fgfc650um5ill60ginnq5eob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxQDVTeiGuBWOgOJG-cYzaBKWiOudx6WU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195857440295-m099lh69fgfc650um5ill60ginnq5eob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195857440295:android:8756e53342abf9e0",
+        "android_client_info": {
+          "package_name": "com.example.alok.banknoqueue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195857440295-hqbd0vb0qu95r3pqalooi3j7p4uj1alg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alok.banknoqueue",
+            "certificate_hash": "4b9f94d2c73ad962a417a64168b594c44926b8d5"
+          }
+        },
+        {
+          "client_id": "195857440295-m099lh69fgfc650um5ill60ginnq5eob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxQDVTeiGuBWOgOJG-cYzaBKWiOudx6WU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195857440295-m099lh69fgfc650um5ill60ginnq5eob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

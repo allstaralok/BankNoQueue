@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Bank No Queue</string>
+    <string name="already_a_customer">Already a Customer</string>
+    <string name="not_a_customer">Not a customer</string>
+
+    <array name="Branches">
+        <item>Bilaspur</item>
+        <item>Raipur</item>
+    </array>
+
+    <array name="Services">
+        <item>Cash Deposite</item>
+        <item>Open Account</item>
+        <item>Demad Draft Making</item>
+        <item>Others</item>
+    </array>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+</resources>
