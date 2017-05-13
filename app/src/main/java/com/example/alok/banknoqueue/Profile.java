@@ -25,26 +25,29 @@ public class Profile extends AppCompatActivity {
     String TAG = "ProfileActivity";
     //Firebase Items
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+
     private TextView userIdText;
     private TextView branchName;
     private TextView tokenNumber;
-    private DatabaseReference databaseReference;
-    private Button update;
-
+    private TextView serviceTextView;
+    private TextView welcome;
 
     private Button signout;
-    private Spinner mBanchSpinner;
+    private Button update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        signout = (Button) findViewById(R.id.SignoutBtn);
-        mBanchSpinner = (Spinner) findViewById(R.id.branchSelector);
-        branchName = (TextView) findViewById(R.id.branchNameTextView);
         tokenNumber = (TextView) findViewById(R.id.tokenCountTextView);
         update = (Button) findViewById(R.id.update);
+        signout = (Button) findViewById(R.id.SignoutBtn);
+        branchName = (TextView) findViewById(R.id.branchNameTextView);
+        serviceTextView = (TextView) findViewById(R.id.serviceTextView);
+        welcome = (TextView) findViewById(R.id.welcomeMessageTextView);
+
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -72,15 +75,21 @@ public class Profile extends AppCompatActivity {
                 final DataSnapshot user = dataSnapshot.child("USER").child(userID);
                 final DataSnapshot bank = dataSnapshot.child("BRANCHES");
                 Log.d(TAG, "Value is--> " + user.getValue(UserInformation.class).getName());
+                Log.d(TAG,"Token Ind" + user.getValue(UserInformation.class).getTokenInd().toString());
 
-                userIdText.setText("Welcome "+user.getValue(UserInformation.class).getName());
-                branchName.setText(user.getValue(UserInformation.class).getBranch());
-                tokenNumber.setText(user.getValue(UserInformation.class).getTokenNo());
+                if(user.getValue(UserInformation.class).getTokenInd().toString().equals("Y")) {
+                    userIdText.setText("Welcome " + user.getValue(UserInformation.class).getName());
+                    branchName.setText(user.getValue(UserInformation.class).getBranch());
+                    tokenNumber.setText(user.getValue(UserInformation.class).getTokenNo());
+                    serviceTextView.setText(user.getValue(UserInformation.class).getService());
+                    welcome.setText("Your Ticket Details Are as Follows:");
+                    update.setVisibility(View.INVISIBLE);
+                }
 
                 update.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        generateToken(user,bank,userID);
+                    //    generateToken(user,bank,userID);
                     }
                 });
 
@@ -114,40 +123,5 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    public void generateToken(DataSnapshot user, DataSnapshot branch, String userID)
-    {
 
-        if(user.getValue(UserInformation.class).getTokenInd().toString().equals("N")  )
-        {
-            //User Data
-            String BranchName = mBanchSpinner.getSelectedItem().toString();
-            String Name = user.getValue(UserInformation.class).getName().toString();
-            String Service = user.getValue(UserInformation.class).getService().toString();
-
-            //Branch Data
-            branch = branch.child(BranchName);
-            String tokenno  = branch.getValue(Branch.class).getTokenNo().toString();
-
-            int token =  Integer.parseInt(tokenno);
-            token++;
-
-
-            //Start Updation
-            UserInformation userInformation = new UserInformation(BranchName,Name,"Service","Y",String.valueOf(token),String.valueOf("1"));
-            Branch branch1 = new Branch(String.valueOf("1"),String.valueOf(token));
-            databaseReference.child("USER").child(userID).setValue(userInformation);
-            databaseReference.child("BRANCHES").child(BranchName).setValue(branch1);
-
-
-            Log.d(TAG,BranchName + " "+ Name + " " + Service + " "+ user.getValue(UserInformation.class).getTokenInd().toString() + " "
-            + tokenno
-            );
-
-
-            //databaseReference.child("USERS").child(userID).setValue(UserInformation.class.);
-
-
-        }
-
-    }
 }

@@ -27,6 +27,7 @@
         <activity android:name=".GuestTimeSelection" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Profile" />
+        <activity android:name=".GenerateTokenForReg"></activity>
     </application>
 
 </manifest>
