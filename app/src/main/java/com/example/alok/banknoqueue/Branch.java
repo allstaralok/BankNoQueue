@@ -1,7 +1,7 @@
 package com.example.alok.banknoqueue;
 
 /**
- * Created by Ayushi Patel on 7/5/17.
+ * Created by Ayushi on 7/5/17.
  */
 
 public class Branch {
