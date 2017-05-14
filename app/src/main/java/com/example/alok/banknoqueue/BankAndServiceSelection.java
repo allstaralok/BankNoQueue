@@ -18,6 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class BankAndServiceSelection extends AppCompatActivity {
 
     private EditText mEmail;
@@ -56,7 +59,7 @@ public class BankAndServiceSelection extends AppCompatActivity {
                 String branch = mBanchSpinner.getSelectedItem().toString();
                 String service = mServiceSpinner.getSelectedItem().toString();
 
-                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(phone)) {
+                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(phone) && isEmailValid(email)) {
                     progressDialog.setMessage("Generating Token");
                     progressDialog.show();
                     addToken(email, phone, branch, service);
@@ -134,5 +137,26 @@ public class BankAndServiceSelection extends AppCompatActivity {
 
 
         }
+    }
+
+    public boolean isEmailValid(String email)
+    {
+        String regExpn =
+                "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                        +"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                        +"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                        +"[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                        +"([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$";
+
+        CharSequence inputStr = email;
+
+        Pattern pattern = Pattern.compile(regExpn,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+
+        if(matcher.matches())
+            return true;
+        else
+            return false;
     }
 }
