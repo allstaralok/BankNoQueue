@@ -1,8 +1,5 @@
 package com.example.alok.banknoqueue;
 
-//Alok
-
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
