@@ -7,13 +7,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.*;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -100,6 +96,7 @@ public class Profile extends AppCompatActivity {
                     branchName.setText(user.getValue(UserInformation.class).getBranch());
                     tokenNumber.setText(user.getValue(UserInformation.class).getTokenNo());
                     serviceTextView.setText(user.getValue(UserInformation.class).getService());
+                    time.setText(user.getValue(UserInformation.class).getTime());
                     welcome.setText("Your Ticket Details Are as Follows:");
                     update.setVisibility(View.INVISIBLE);
                 }
