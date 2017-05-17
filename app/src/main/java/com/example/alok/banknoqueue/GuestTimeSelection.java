@@ -14,6 +14,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class GuestTimeSelection extends AppCompatActivity {
 
     private TextView mticketNumber;
@@ -38,7 +41,26 @@ public class GuestTimeSelection extends AppCompatActivity {
         int time = 950;
             time = time + Integer.parseInt(token)*10 ;
 
-        String sTime = String.valueOf(time);
+        String stime= String.valueOf(time);
+        String hh = stime.substring(0,2);
+        String mm = stime.substring(2,4);
+        String _24HourTime = hh+":"+mm;
+
+        String _12hour = "";
+
+        try {
+            SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+            Date _24HourDt = _24HourSDF.parse(_24HourTime);
+            _12hour = _12HourSDF.format(_24HourDt);
+
+        }
+        catch (Exception e)
+        {
+            Log.d("Guest Time", "Error while conversion");
+
+        }
+
 
         mticketNumber = (TextView) findViewById(R.id.ticketNoTextView);
         mbranch = (TextView) findViewById(R.id.branchTextView);
@@ -48,7 +70,7 @@ public class GuestTimeSelection extends AppCompatActivity {
         mticketNumber.setText(token);
         mbranch.setText(branch);
         mService.setText(service);
-        mTime.setText(sTime);
+        mTime.setText(_12hour);
 
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Gusestdata");

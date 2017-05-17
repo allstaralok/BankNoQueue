@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -119,8 +121,28 @@ public class BankAndServiceSelection extends AppCompatActivity {
         Log.d("Token ++", String.valueOf(tok));
         if(tok<50)
         {
+            int time = 950;
+            time = time + tok*10 ;
+
+            String stime= String.valueOf(time);
+            String hh = stime.substring(0,2);
+            String mm = stime.substring(2,4);
+            String _24HourTime = hh+":"+mm;
+            String _12hour = "";
+
+            try {
+                SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+                Date _24HourDt = _24HourSDF.parse(_24HourTime);
+                _12hour = _12HourSDF.format(_24HourDt);
+            }
+            catch (Exception e)
+            {
+                Log.d("GuestTime", "Error while conversion");
+
+            }
             String s  = String.valueOf(tok);
-            Branch branch1 = new Branch("1", s);
+            Branch branch1 = new Branch(_12hour, s);
             mDatabaseReference.child("BRANCHES").child(branch).setValue(branch1);
 
             Intent intent = new Intent(BankAndServiceSelection.this,GuestTimeSelection.class);
