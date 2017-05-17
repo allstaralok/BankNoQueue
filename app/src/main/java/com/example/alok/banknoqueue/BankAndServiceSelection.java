@@ -160,7 +160,6 @@ public class BankAndServiceSelection extends AppCompatActivity {
 
     private boolean isValidMobile(String phone) {
         boolean check=false;
-
             if(phone.length() != 10) {
                 check = false;
             } else
