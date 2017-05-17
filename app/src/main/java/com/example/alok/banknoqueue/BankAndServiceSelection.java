@@ -57,7 +57,7 @@ public class BankAndServiceSelection extends AppCompatActivity {
                 String branch = mBanchSpinner.getSelectedItem().toString();
                 String service = mServiceSpinner.getSelectedItem().toString();
 
-                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(phone) && isEmailValid(email)) {
+                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(phone) && isEmailValid(email) && isValidMobile(phone)) {
                     progressDialog.setMessage("Generating Token");
                     progressDialog.show();
                     addToken(email, phone, branch, service);
@@ -156,5 +156,16 @@ public class BankAndServiceSelection extends AppCompatActivity {
             return true;
         else
             return false;
+    }
+
+    private boolean isValidMobile(String phone) {
+        boolean check=false;
+
+            if(phone.length() != 10) {
+                check = false;
+            } else
+                check = true;
+
+        return check;
     }
 }
