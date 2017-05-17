@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+
 public class GenerateTokenForReg extends AppCompatActivity {
 
     //Firebase Items
@@ -87,9 +89,22 @@ public class GenerateTokenForReg extends AppCompatActivity {
             int token =  Integer.parseInt(tokenno);
             token++;
 
+            int time = 950;
+            time = time + token*10 ;
+
+            String stime= String.valueOf(time);
+            String hh = stime.substring(0,2);
+            String mm = stime.substring(2,4);
+            String _24hour = hh+":"+mm;
+
+            SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+            String _12hour = _12HourSDF.format(_24hour);
+
+
+
             if(token < 50) {
                 //Start Updation
-                UserInformation userInformation = new UserInformation(BranchName, Name, Service, "Y", String.valueOf(token), String.valueOf("1"));
+                UserInformation userInformation = new UserInformation(BranchName, Name, Service, "Y", String.valueOf(token), _12hour);
                 Branch branch1 = new Branch(String.valueOf("1"), String.valueOf(token));
                 databaseReference.child("USER").child(userID).setValue(userInformation);
                 databaseReference.child("BRANCHES").child(BranchName).setValue(branch1);

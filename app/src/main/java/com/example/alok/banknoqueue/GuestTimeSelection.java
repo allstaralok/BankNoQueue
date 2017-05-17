@@ -35,8 +35,8 @@ public class GuestTimeSelection extends AppCompatActivity {
         String branch = intent.getStringExtra("Branch");
         String service  = intent.getStringExtra("Service");
         String token = intent.getStringExtra("Token");
-        int time = 1000;
-            time = time + Integer.parseInt(token)*15 ;
+        int time = 950;
+            time = time + Integer.parseInt(token)*10 ;
 
         String sTime = String.valueOf(time);
 
